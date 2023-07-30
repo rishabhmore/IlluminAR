@@ -11,6 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  arkit_plugin: ^1.0.6
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
