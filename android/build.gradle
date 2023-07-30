@@ -1,5 +1,7 @@
 buildscript {
     ext.kotlin_version = '1.7.10'
+    ext.ar_core_version = '1.33.0'
+    ext.scene_form_version = '1.8.0'
     repositories {
         google()
         mavenCentral()

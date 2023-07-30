@@ -11,7 +11,7 @@ if (flutterRoot == null) {
     throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
 }
 
-def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode').toInteger()
 if (flutterVersionCode == null) {
     flutterVersionCode = '1'
 }
@@ -19,6 +19,11 @@ if (flutterVersionCode == null) {
 def flutterVersionName = localProperties.getProperty('flutter.versionName')
 if (flutterVersionName == null) {
     flutterVersionName = '1.0'
+}
+
+def flutterMinSdkVersion = localProperties.getProperty('flutter.minSdkVersion').toInteger()
+if (flutterMinSdkVersion == null) {
+    flutterMinSdkVersion = 24
 }
 
 apply plugin: 'com.android.application'
@@ -48,9 +53,9 @@ android {
         applicationId "com.unreal.space.unreal_space"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion flutter.minSdkVersion
+        minSdkVersion flutterMinSdkVersion
         targetSdkVersion flutter.targetSdkVersion
-        versionCode flutterVersionCode.toInteger()
+        versionCode flutterVersionCode
         versionName flutterVersionName
     }
 
@@ -69,4 +74,7 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "com.google.ar:core:$ar_core_version"
+    implementation "com.google.ar.sceneform.ux:sceneform-ux:$scene_form_version"
+    implementation "com.google.ar.sceneform:core:$scene_form_version"
 }
