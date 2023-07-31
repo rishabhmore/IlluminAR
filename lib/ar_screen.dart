@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:unreal_space/examples/custom_object.dart';
-import 'package:unreal_space/examples/plane_detection.dart';
 
 class ARScreen extends StatelessWidget {
   const ARScreen({super.key});
