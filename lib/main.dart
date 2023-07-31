@@ -5,9 +5,9 @@ import 'package:unreal_space/ar_app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  debugPrint('ARCORE IS AVAILABLE? ');
-  debugPrint(await ArCoreController.checkArCoreAvailability());
-  debugPrint('\nAR SERVICES INSTALLED? ');
-  debugPrint(await ArCoreController.checkIsArCoreInstalled());
+  print('ARCORE IS AVAILABLE? ');
+  print(await ArCoreController.checkArCoreAvailability());
+  print('\nAR SERVICES INSTALLED? ');
+  print(await ArCoreController.checkIsArCoreInstalled());
   runApp(const ARApp());
 }

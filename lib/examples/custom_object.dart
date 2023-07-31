@@ -39,8 +39,10 @@ class _CustomObjectState extends State<CustomObject> {
   }
 
   void _handleOnPlaneTap(List<ArCoreHitTestResult> hits) {
-    final hit = hits.first;
-    _addSphere(hit);
+    if (hits.isNotEmpty) {
+      final hit = hits.first;
+      _addSphere(hit);
+    }
   }
 
   Future _addSphere(ArCoreHitTestResult hit) async {
@@ -57,22 +59,24 @@ class _CustomObjectState extends State<CustomObject> {
       rotation: vector.Vector4(0, 0, 0, 0),
     );
 
-    final ByteData textureBytes = await rootBundle.load('assets/earth.jpg');
+    final ByteData textureBytes = await rootBundle.load('assets/earth.jpeg');
 
     final earthMaterial = ArCoreMaterial(
-        color: const Color.fromARGB(120, 66, 134, 244),
-        textureBytes: textureBytes.buffer.asUint8List());
+      color: const Color.fromARGB(120, 66, 134, 244),
+      textureBytes: textureBytes.buffer.asUint8List(),
+    );
 
     final earthShape = ArCoreSphere(
       materials: [earthMaterial],
-      radius: 0.1,
+      radius: 0.2,
     );
 
     final earth = ArCoreNode(
-        shape: earthShape,
-        children: [moon],
-        position: hit.pose.translation + vector.Vector3(0.0, 1.0, 0.0),
-        rotation: hit.pose.rotation);
+      shape: earthShape,
+      children: [moon],
+      position: hit.pose.translation + vector.Vector3(0.0, 1.0, 0.0),
+      rotation: hit.pose.rotation,
+    );
 
     controller?.addArCoreNodeWithAnchor(earth);
   }
