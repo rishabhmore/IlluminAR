@@ -3,6 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:vector_math/vector_math_64.dart' as vector;
 
+///
+/// AR terms wrt Flutter terminologies
+///
+/// 1. Material/Cupertino App -> Scene
+/// 2. Widget -> Node
+/// 3. Theme -> Material(Textures)
 class CustomObject extends StatefulWidget {
   const CustomObject({super.key});
 
